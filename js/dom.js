@@ -36,6 +36,7 @@ document.addEventListener("keydown", function (event) {
       break;
     case "ArrowDown":
       game.movePlayer('down');
+      break;
     case "ArrowRight":
       game.movePlayer('right');
       break;

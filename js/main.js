@@ -29,48 +29,48 @@ class Game {
 }
 
 class Player {
-    constructor() {
-        this.positionX = 40;
-        this.positionY = 40;
-        this.squarePlayer = null;  // like the DOM elem
-    }
+  constructor() {
+    this.positionX = 45;
+    this.positionY = 45;
+    this.squarePlayer = null; // like the DOM elem
+  }
 
-    moveUp() {
-        if (this.positionY < 90) {
-        this.positionY+=2; 
-        }
+  moveUp() {
+    if (this.positionY < 90) {
+      this.positionY += 2;
     }
+  }
 
-    moveDown() {
-        if (this.positionY > 0) {
-            this.positionY-=2;
-        }
+  moveDown() {
+    if (this.positionY > 1) {
+      this.positionY -= 2;
     }
+  }
 
-    moveRight() {
-        if (this.positionX < 90) {
-        this.positionX+=2;
-        }
+  moveRight() {
+    if (this.positionX < 90) {
+      this.positionX += 2;
     }
+  }
 
-    moveLeft() {
-        if (this.positionX > 0) {
-            this.positionX-=2;
-        };
+  moveLeft() {
+    if (this.positionX > 0) {
+      this.positionX -= 2;
     }
+  }
 
-    displayPlayer() {
-        let board = document.getElementById('board');
-        let myself = document.createElement('div');
-        myself.className = "myself";
-        board.appendChild(myself);
-        return myself;
-    }
+  displayPlayer() {
+    let board = document.getElementById("board");
+    let myself = document.createElement("div");
+    myself.className = "myself";
+    board.appendChild(myself);
+    return myself;
+  }
 
-    interactPlayer() {
-        this.squarePlayer.style.left = this.positionX + 'vw';
-        this.squarePlayer.style.bottom = this.positionY + 'vh';
-    }
+  interactPlayer() {
+    this.squarePlayer.style.left = this.positionX + "vw";
+    this.squarePlayer.style.bottom = this.positionY + "vh";
+  }
 }
 
 class Deadline {
