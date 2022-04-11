@@ -1,5 +1,5 @@
 const player = new Player();
-player.displayPlayer();
+//player.displayPlayer();
 
 const game = new Game();
 game.start();

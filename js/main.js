@@ -6,51 +6,56 @@ class Game {
 
     start() {
         this.player = new Player();
-        //this.player.displayPlayer();
-    
+        // this.player.getPlayer();
+
+        this.player.squarePlayer = this.player.displayPlayer();
+
+        this.player.interactPlayer();
+        this.movePlayer();
     }
 
     movePlayer(direction) {
         if (direction === 'up') {
-            player.moveUp();
+            this.player.moveUp();
         } else if (direction === 'down') {
-            player.moveDown();
+            this.player.moveDown();
         } else if (direction === 'right') {
-            player.moveRight();
+            this.player.moveRight();
         } else if (direction === 'left') {
-            player.moveLeft();
+            this.player.moveLeft();
         }
+        this.player.interactPlayer();       // after every move we check where the player is
     }
 }
 
 class Player {
     constructor() {
-        this.positionX = 70;
-        this.positionY = 70;
-        this.domElement = 0;
+        this.positionX = 40;
+        this.positionY = 40;
+        this.squarePlayer = null;  // like the DOM elem
     }
 
     moveUp() {
-        if (this.positionY < 100) {
-        this.positionY++; 
+        if (this.positionY < 90) {
+        this.positionY+=2; 
         }
     }
 
     moveDown() {
         if (this.positionY > 0) {
-            this.positionY--;
+            this.positionY-=2;
         }
     }
 
     moveRight() {
-        if (this.positionX < 100) {
-        this.positionX++;
+        if (this.positionX < 90) {
+        this.positionX+=2;
         }
     }
 
     moveLeft() {
         if (this.positionX > 0) {
-            this.positionX--;
+            this.positionX-=2;
         };
     }
 
@@ -61,6 +66,11 @@ class Player {
         board.appendChild(myself);
         return myself;
     }
+
+    interactPlayer() {
+        this.squarePlayer.style.left = this.positionX + 'vw';
+        this.squarePlayer.style.bottom = this.positionY + 'vh';
+    }
 }
 
 class Deadline {
@@ -68,4 +78,3 @@ class Deadline {
 
     }
 }
-

@@ -5,10 +5,10 @@
 }
 
 .myself {
-    position: relative;
+    position: absolute;
     background-color: blueviolet;
     height: 10vh;
-    width: 40vh;
+    width: 10vh;
 }
 
 #obstacle {
