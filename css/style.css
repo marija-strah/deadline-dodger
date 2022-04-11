@@ -4,11 +4,13 @@
     height: 100vh;
 }
 
-/*
-#player {
-
+.myself {
+    position: relative;
+    background-color: blueviolet;
+    height: 10vh;
+    width: 40vh;
 }
 
 #obstacle {
     
-}*/
+}
