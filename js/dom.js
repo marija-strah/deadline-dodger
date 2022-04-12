@@ -1,5 +1,6 @@
 const player = new Player();
-//player.displayPlayer();
+
+const deadline = new Deadline();
 
 const game = new Game();
 game.start();

@@ -1,31 +1,36 @@
 class Game {
-    constructor() {
-        this.player = null;
+  constructor() {
+    this.player = null;
+    this.deadline = null;
+    this.time = 0;
+  }
 
+  start() {
+    this.player = new Player();
+    this.player.squarePlayer = this.player.displayPlayer();
+    this.player.interactPlayer();
+    this.movePlayer();
+
+    this.deadline = new Deadline();
+    this.deadline.squareDeadline = this.deadline.displayDeadline();
+    this.deadline.interactDeadline();
+    deadline.moveDeadline();
+  }
+
+  
+
+  movePlayer(direction) {
+    if (direction === "up") {
+      this.player.moveUp();
+    } else if (direction === "down") {
+      this.player.moveDown();
+    } else if (direction === "right") {
+      this.player.moveRight();
+    } else if (direction === "left") {
+      this.player.moveLeft();
     }
-
-    start() {
-        this.player = new Player();
-        // this.player.getPlayer();
-
-        this.player.squarePlayer = this.player.displayPlayer();
-
-        this.player.interactPlayer();
-        this.movePlayer();
-    }
-
-    movePlayer(direction) {
-        if (direction === 'up') {
-            this.player.moveUp();
-        } else if (direction === 'down') {
-            this.player.moveDown();
-        } else if (direction === 'right') {
-            this.player.moveRight();
-        } else if (direction === 'left') {
-            this.player.moveLeft();
-        }
-        this.player.interactPlayer();       // after every move we check where the player is
-    }
+    this.player.interactPlayer(); // after every move we check where the player is
+  }
 }
 
 class Player {
@@ -75,6 +80,25 @@ class Player {
 
 class Deadline {
     constructor() {
+      this.positionX = 0;
+      this.positionY = 50;
+      this.squareDeadline = null;
+    }
 
+    moveDeadline() {
+      this.positionX++;
+    }
+
+    displayDeadline() {
+      let board = document.getElementById("board");
+      let deadline = document.createElement("div");
+      deadline.className = "deadline";
+      board.appendChild(deadline);
+      return deadline;
+    }
+
+    interactDeadline() {
+      this.squareDeadline.style.left = this.positionX + "vw";
+      this.squareDeadline.style.bottom = this.positionY + "vh";
     }
 }

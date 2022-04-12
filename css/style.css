@@ -8,9 +8,14 @@
     position: absolute;
     background-color: blueviolet;
     height: 10vh;
-    width: 10vh;
+    width: 12vh;
+    border-radius: 30%;
 }
 
-#obstacle {
-    
+.deadline {
+    position: absolute;
+    background-color: black;
+    height: 10vh;
+    width: 20vh;
+    border-radius: 12%;
 }
