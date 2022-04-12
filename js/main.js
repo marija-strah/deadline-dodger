@@ -2,6 +2,7 @@ class Game {
   constructor() {
     this.player = null;
     this.deadline = null;
+    this.deadlines = [];
     this.time = 0;
   }
 
@@ -15,10 +16,17 @@ class Game {
     this.deadline.squareDeadline = this.deadline.displayDeadline();
     this.deadline.interactDeadline();
     deadline.moveDeadline();
+
+    setInterval(()=>{
+      this.deadline.moveDeadline()
+      this.deadline.interactDeadline()
+      console.log(this.deadline);
+    }, 1000);
+    
   }
 
   
-
+  
   movePlayer(direction) {
     if (direction === "up") {
       this.player.moveUp();
@@ -32,6 +40,7 @@ class Game {
     this.player.interactPlayer(); // after every move we check where the player is
   }
 }
+
 
 class Player {
   constructor() {
@@ -101,4 +110,21 @@ class Deadline {
       this.squareDeadline.style.left = this.positionX + "vw";
       this.squareDeadline.style.bottom = this.positionY + "vh";
     }
+    
 }
+
+/*
+  setInterval(() => {
+    console.log('hello');
+  }, 1000);*/
+
+  /*
+  function intervalito() {setInterval(() => {
+    deadline.moveDeadline;
+    deadline.displayDeadline;
+    console.log('hi hi hi');
+    }, 1000);
+    deadline.interactDeadline};
+    intervalito();
+*/
+
