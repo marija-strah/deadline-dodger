@@ -10,7 +10,7 @@
     height: 10vh;
     width: 10vh;
     border-radius: 30%;
-    background-image: url("../images/v5.jpg");
+    background-image: url("../images/myself.jpg");
 }
 
 .deadline {
@@ -19,5 +19,5 @@
     height: 10vh;
     width: 20vh;
     border-radius: 12%;
-    background-image: url("../images/bricks.jpg");
+    background-image: url("../images/deadline.jpg");
 }
