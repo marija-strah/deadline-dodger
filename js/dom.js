@@ -1,6 +1,6 @@
-const player = new Player();
+//const player = new Player();
 
-const deadline = new Deadline();
+//const deadline = new Deadline();
 
 const game = new Game();
 game.start();
@@ -45,5 +45,4 @@ document.addEventListener("keydown", function (event) {
       game.movePlayer('left');
       break;
   }
-  console.log(player);
 });

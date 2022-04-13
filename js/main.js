@@ -1,9 +1,10 @@
 class Game {
   constructor() {
     this.player = null;
-    this.deadline = null;
     this.deadlines = [];
     this.time = 0;
+    this.board = document.getElementById("board");
+    this.gameOver = document.getElementById("game-over-page");
   }
 
   start() {
@@ -12,29 +13,37 @@ class Game {
     this.player.interactPlayer();
     this.movePlayer();
 
-    this.deadline = new Deadline();
-    this.deadline.squareDeadline = this.deadline.displayDeadline();
-    this.deadline.interactDeadline(deadline);
-    deadline.moveDeadline();
+    this.board.style.display = "block"
+    this.gameOver.style.display = "none"
+    
+
+
+    //this.deadline = new Deadline();
+    //this.deadline.squareDeadline = this.deadline.displayDeadline();
+    //this.deadline.interactDeadline(deadline);
+    //deadline.moveDeadline();
 
     setInterval(()=>{
-      this.deadlines.forEach( (deadline) => {
-      this.deadline.moveDeadline(deadline);
-      this.deadline.interactDeadline(deadline);
-      // this.deadlineCollision();
+
+      this.deadlines.forEach( (element) => {
+      element.moveDeadline();
+      element.interactDeadline();
+
+      this.deadlineCollision(element); //this.player and element
+      // we need positionX, positionY, width, height of this.player and same for element
       //console.log(this.deadline);
       });
 
       if (this.time % 30 === 0) {
         const newDeadline = new Deadline;
-        newDeadline.squareDeadline = this.deadline.displayDeadline();
+        newDeadline.squareDeadline = newDeadline.displayDeadline();
         this.deadlines.push(newDeadline);
       }
       this.time++;
-    }, 250);
+    }, 200);
     
   }
-
+/*
   // not working bc not an array
   removeDeadline(deadline) {
     if (deadline.positionY < 0) {
@@ -43,8 +52,7 @@ class Game {
     
     console.log(deadline);
     }
-  }
-
+  }*/
   
   movePlayer(direction) {
     if (direction === "up") {
@@ -58,6 +66,16 @@ class Game {
     }
     this.player.interactPlayer(); // after every move we check where the player is
   }
+  deadlineCollision(element) {
+    if (this.player.positionX < element.positionX + element.width &&
+      this.player.positionX + this.player.width > element.positionX &&
+      this.player.positionY < element.positionY + element.height &&
+      this.player.height + this.player.positionY > element.positionY) {
+        //alert('collision detected');
+        this.board.style.display = "none"
+        this.gameOver.style.display = "block"
+      }
+  }
 }
 
 
@@ -65,6 +83,8 @@ class Player {
   constructor() {
     this.positionX = 45;
     this.positionY = 45;
+    this.height = 12;
+    this.width = 5;
     this.squarePlayer = null; // like the DOM elem
   }
 
@@ -101,6 +121,8 @@ class Player {
   }
 
   interactPlayer() {
+    this.squarePlayer.style.width = this.width + "vw"
+    this.squarePlayer.style.height = this.height + "vh"
     this.squarePlayer.style.left = this.positionX + "vw";
     this.squarePlayer.style.bottom = this.positionY + "vh";
   }
@@ -109,21 +131,29 @@ class Player {
 class Deadline {
     constructor() {
       //this.positionX = Math.random() * (50 - 0);
-      this.positionX = 0;
-      this.positionY = 50;
+      //this.positionY = 50;
+      this.linePositions = [10, 30, 50, 70]
+      this.lineRandomIndex = Math.floor(Math.random()*(this.linePositions.length))
       this.squareDeadline = null;
       this.width = 10;
-      this.positionX = Math.floor(Math.random() * (100 - this.width + 1));
+      this.height = 10;
+      //this.positionY = Math.floor(Math.random() * (100 - this.width + 1));
+      this.positionY = this.linePositions[this.lineRandomIndex];
+      this.positionX = 0 - this.width;
+      //this.speed = random number between 1 and 3 maybe
     }
 
     moveDeadline() {
       this.positionX++;
+    /*
       if (this.positionX >= 95) {
+        let board = document.getElementById("board");
         const deadlineToRemove = document.querySelector(".deadline");
-        deadlineToRemove.remove();
-        /*let board1 = document.getElementById("board");
-        board1.removeChild(board1.deadline);*/
-      }
+        board.removeChild(deadlineToRemove)
+        //deadlineToRemove.remove();
+
+        //removes all of them
+      }*/
     }
 
     displayDeadline() {
@@ -135,6 +165,8 @@ class Deadline {
     }
 
     interactDeadline() {
+      this.squareDeadline.style.width = this.width + "vw"
+      this.squareDeadline.style.height = this.height + "vh"
       this.squareDeadline.style.left = this.positionX + "vw";
       this.squareDeadline.style.bottom = this.positionY + "vh";
     }
