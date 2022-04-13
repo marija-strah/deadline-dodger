@@ -1,6 +1,6 @@
 class Game {
   constructor() {
-    this.player = null;
+    //this.player = null;
     this.deadline = null;
     this.deadlines = [];
     this.time = 0;
@@ -14,18 +14,37 @@ class Game {
 
     this.deadline = new Deadline();
     this.deadline.squareDeadline = this.deadline.displayDeadline();
-    this.deadline.interactDeadline();
+    this.deadline.interactDeadline(deadline);
     deadline.moveDeadline();
 
     setInterval(()=>{
-      this.deadline.moveDeadline()
-      this.deadline.interactDeadline()
-      console.log(this.deadline);
-    }, 1000);
+      this.deadlines.forEach( (deadline) => {
+      this.deadline.moveDeadline(deadline);
+      this.deadline.interactDeadline(deadline);
+      // this.deadlineCollision();
+      //console.log(this.deadline);
+      });
+
+      if (this.time % 30 === 0) {
+        const newDeadline = new Deadline;
+        newDeadline.squareDeadline = this.deadline.displayDeadline();
+        this.deadlines.push(newDeadline);
+      }
+      this.time++;
+    }, 250);
     
   }
 
-  
+  // not working bc not an array
+  removeDeadline(deadline) {
+    if (deadline.positionY < 0) {
+    this.deadlines.shift();
+    deadline.squareDeadline.remove();
+    
+    console.log(deadline);
+    }
+  }
+
   
   movePlayer(direction) {
     if (direction === "up") {
@@ -89,13 +108,19 @@ class Player {
 
 class Deadline {
     constructor() {
+      //this.positionX = Math.random() * (50 - 0);
       this.positionX = 0;
       this.positionY = 50;
       this.squareDeadline = null;
+      this.width = 10;
+      this.positionX = Math.floor(Math.random() * (100 - this.width + 1));
     }
 
     moveDeadline() {
       this.positionX++;
+      if (this.positionX >= 100) {
+
+      }
     }
 
     displayDeadline() {
@@ -106,25 +131,10 @@ class Deadline {
       return deadline;
     }
 
-    interactDeadline() {
-      this.squareDeadline.style.left = this.positionX + "vw";
-      this.squareDeadline.style.bottom = this.positionY + "vh";
+    interactDeadline(deadline) {
+      deadline.squareDeadline.style.left = this.positionX + "vw";
+      deadline.squareDeadline.style.bottom = this.positionY + "vh";
     }
     
 }
-
-/*
-  setInterval(() => {
-    console.log('hello');
-  }, 1000);*/
-
-  /*
-  function intervalito() {setInterval(() => {
-    deadline.moveDeadline;
-    deadline.displayDeadline;
-    console.log('hi hi hi');
-    }, 1000);
-    deadline.interactDeadline};
-    intervalito();
-*/
 

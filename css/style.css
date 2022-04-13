@@ -8,8 +8,9 @@
     position: absolute;
     background-color: blueviolet;
     height: 10vh;
-    width: 12vh;
+    width: 10vh;
     border-radius: 30%;
+    background-image: url("../images/v5.jpg");
 }
 
 .deadline {
@@ -18,4 +19,5 @@
     height: 10vh;
     width: 20vh;
     border-radius: 12%;
+    background-image: url("../images/bricks.jpg");
 }
