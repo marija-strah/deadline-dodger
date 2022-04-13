@@ -1,6 +1,6 @@
 class Game {
   constructor() {
-    //this.player = null;
+    this.player = null;
     this.deadline = null;
     this.deadlines = [];
     this.time = 0;
@@ -131,9 +131,9 @@ class Deadline {
       return deadline;
     }
 
-    interactDeadline(deadline) {
-      deadline.squareDeadline.style.left = this.positionX + "vw";
-      deadline.squareDeadline.style.bottom = this.positionY + "vh";
+    interactDeadline() {
+      this.squareDeadline.style.left = this.positionX + "vw";
+      this.squareDeadline.style.bottom = this.positionY + "vh";
     }
     
 }
