@@ -118,8 +118,11 @@ class Deadline {
 
     moveDeadline() {
       this.positionX++;
-      if (this.positionX >= 100) {
-
+      if (this.positionX >= 95) {
+        const deadlineToRemove = document.querySelector(".deadline");
+        deadlineToRemove.remove();
+        /*let board1 = document.getElementById("board");
+        board1.removeChild(board1.deadline);*/
       }
     }
 
