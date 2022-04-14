@@ -1,5 +1,5 @@
 const game = new Game();
-game.start();
+game.instructions();
 
 document.addEventListener("keydown", function (event) {
   switch (event.key) {

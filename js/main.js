@@ -6,7 +6,25 @@ class Game {
     this.board = document.getElementById("board");
     this.gameOver = document.getElementById("game-over-page");
     this.youWon = document.getElementById("win-page");
+    this.intro = document.getElementById("instructions");
+    this.beginBtn = document.getElementById("beginBtn");
   }
+
+  instructions() {
+   
+    this.intro.style.display = 'block';
+    this.board.style.display = "none";
+    this.gameOver.style.display = "none";
+    this.youWon.style.display = "none";
+
+    /*this.beginBtn = document.createElement("button");
+    beginBtn.innerText = "Begin 🏃"; */
+
+    beginBtn.addEventListener('click', () => {this.start()
+    //this.intro.remove()});
+    //this.intro.appendChild(beginBtn);
+  })
+}
 
   start() {
     this.player = new Player();
@@ -17,12 +35,10 @@ class Game {
     this.board.style.display = "block";
     this.gameOver.style.display = "none";
     this.youWon.style.display = "none";
+    this.intro.style.display = "none";
 
-
-    //this.deadline = new Deadline();
-    //this.deadline.squareDeadline = this.deadline.displayDeadline();
-    //this.deadline.interactDeadline(deadline);
-    //deadline.moveDeadline();
+    let audio = new Audio('../benny-hill-theme.mp3');
+    audio.play();
 
     setInterval(()=>{
 
@@ -83,7 +99,7 @@ class Game {
         this.board.style.display = "none"
         this.youWon.style.display = "none"
         this.gameOver.style.display = "block"
-      } else if (this.player.positionY > 80 && this.player.positionY < 90) {
+      } else if (this.player.positionY > 80 && this.player.positionY < 95) {
         this.board.style.display = "none"
         this.youWon.style.display = "block"
         this.gameOver.style.display = "none"
@@ -94,34 +110,34 @@ class Game {
 
 class Player {
   constructor() {
-    this.positionX = 50;
+    this.positionX = 5;
     this.positionY = 0;
     this.height = 12;
     this.width = 5;
-    this.squarePlayer = null; // like the DOM elem
+    this.squarePlayer = null; //  the DOM elem
   }
 
   moveUp() {
     if (this.positionY < 90) {
-      this.positionY += 2;
+      this.positionY += 5;
     }
   }
 
   moveDown() {
     if (this.positionY > 1) {
-      this.positionY -= 2;
+      this.positionY -= 5;
     }
   }
 
   moveRight() {
     if (this.positionX < 90) {
-      this.positionX += 2;
+      this.positionX += 5;
     }
   }
 
   moveLeft() {
     if (this.positionX > 0) {
-      this.positionX -= 2;
+      this.positionX -= 5;
     }
   }
 

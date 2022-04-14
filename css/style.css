@@ -1,9 +1,13 @@
+html {
+    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 #board {
     position: relative;
     height: 100vh;
-    background-color: aquamarine;
     background-image: url("../images/background.jpg");
-    background-repeat: inherit;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .myself {
@@ -18,17 +22,40 @@
     background-color: black;
     border-radius: 12%;
     background-image: url("../images/deadline.jpg");
+    border-style: dashed;
 }
 
 #game-over-page {
-    height: 1251px;
-    width: 1880px;
-    background-image: url("../images/gameover.png");
-    /*background-size: 500px;*/
+    height: 100vh;
+    background-image: url("../images/pow.png");
+    background-position: center;
     background-repeat: no-repeat;
 }
 
 #win-page {
     height: 690vh;
     background-image: url("../images/arthur-dancing.gif");
+}
+
+#instructions {
+    background-color: pink;
+    height: 100vh;
+}
+
+#instructions h1 {
+    font-size: 50px;
+    text-align: center;
+    padding: 150px;
+}
+
+#instructions button {
+    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    background-color: aquamarine;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 30px;
+    margin: 10px 20px 20px 600px;
 }
