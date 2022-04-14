@@ -33,8 +33,9 @@ html {
 }
 
 #win-page {
-    height: 690vh;
+    height: 100vh;
     background-image: url("../images/arthur-dancing.gif");
+    background-repeat: repeat;
 }
 
 #instructions {
