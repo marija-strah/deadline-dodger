@@ -1,7 +1,9 @@
 #board {
     position: relative;
-    background-color: aquamarine;
     height: 100vh;
+    background-color: aquamarine;
+    background-image: url("../images/background.jpg");
+    background-repeat: inherit;
 }
 
 .myself {
@@ -16,9 +18,17 @@
     background-color: black;
     border-radius: 12%;
     background-image: url("../images/deadline.jpg");
-    /*overflow: hidden;*/
 }
 
-.hidden {
-    display: none
+#game-over-page {
+    height: 1251px;
+    width: 1880px;
+    background-image: url("../images/gameover.png");
+    /*background-size: 500px;*/
+    background-repeat: no-repeat;
+}
+
+#win-page {
+    height: 690vh;
+    background-image: url("../images/arthur-dancing.gif");
 }

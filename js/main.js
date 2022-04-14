@@ -5,6 +5,7 @@ class Game {
     this.time = 0;
     this.board = document.getElementById("board");
     this.gameOver = document.getElementById("game-over-page");
+    this.youWon = document.getElementById("win-page");
   }
 
   start() {
@@ -13,9 +14,9 @@ class Game {
     this.player.interactPlayer();
     this.movePlayer();
 
-    this.board.style.display = "block"
-    this.gameOver.style.display = "none"
-    
+    this.board.style.display = "block";
+    this.gameOver.style.display = "none";
+    this.youWon.style.display = "none";
 
 
     //this.deadline = new Deadline();
@@ -29,18 +30,17 @@ class Game {
       element.moveDeadline();
       element.interactDeadline();
 
-      this.deadlineCollision(element); //this.player and element
-      // we need positionX, positionY, width, height of this.player and same for element
-      //console.log(this.deadline);
+      this.deadlineCollision(element);
+      this.removeDeadline(element);
       });
 
-      if (this.time % 30 === 0) {
+      if (this.time % 11 === 0) {
         const newDeadline = new Deadline;
         newDeadline.squareDeadline = newDeadline.displayDeadline();
         this.deadlines.push(newDeadline);
       }
       this.time++;
-    }, 200);
+    }, 150);
     
   }
 /*
@@ -66,6 +66,14 @@ class Game {
     }
     this.player.interactPlayer(); // after every move we check where the player is
   }
+
+  removeDeadline(element) {
+    if (element.positionX > 90) {
+      element.squareDeadline.remove();
+      this.deadlines.shift();
+    }
+  }
+
   deadlineCollision(element) {
     if (this.player.positionX < element.positionX + element.width &&
       this.player.positionX + this.player.width > element.positionX &&
@@ -73,7 +81,12 @@ class Game {
       this.player.height + this.player.positionY > element.positionY) {
         //alert('collision detected');
         this.board.style.display = "none"
+        this.youWon.style.display = "none"
         this.gameOver.style.display = "block"
+      } else if (this.player.positionY > 80 && this.player.positionY < 90) {
+        this.board.style.display = "none"
+        this.youWon.style.display = "block"
+        this.gameOver.style.display = "none"
       }
   }
 }
@@ -81,8 +94,8 @@ class Game {
 
 class Player {
   constructor() {
-    this.positionX = 45;
-    this.positionY = 45;
+    this.positionX = 50;
+    this.positionY = 0;
     this.height = 12;
     this.width = 5;
     this.squarePlayer = null; // like the DOM elem
@@ -132,7 +145,7 @@ class Deadline {
     constructor() {
       //this.positionX = Math.random() * (50 - 0);
       //this.positionY = 50;
-      this.linePositions = [10, 30, 50, 70]
+      this.linePositions = [15, 35, 55, 75]
       this.lineRandomIndex = Math.floor(Math.random()*(this.linePositions.length))
       this.squareDeadline = null;
       this.width = 10;
@@ -145,6 +158,8 @@ class Deadline {
 
     moveDeadline() {
       this.positionX++;
+
+
     /*
       if (this.positionX >= 95) {
         let board = document.getElementById("board");
