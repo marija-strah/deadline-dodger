@@ -56,7 +56,7 @@ class Game {
         this.deadlines.push(newDeadline);
       }
       this.time++;
-    }, 150);
+    }, 80);
     
   }
 /*
