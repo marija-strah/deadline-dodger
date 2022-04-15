@@ -8,6 +8,8 @@ class Game {
     this.youWon = document.getElementById("win-page");
     this.intro = document.getElementById("instructions");
     this.beginBtn = document.getElementById("beginBtn");
+    this.winReplayBtn = document.getElementById("replay");
+    this.loseReplayBtn = document.getElementById("reset");
   }
 
   instructions() {
@@ -17,14 +19,16 @@ class Game {
     this.gameOver.style.display = "none";
     this.youWon.style.display = "none";
 
-    /*this.beginBtn = document.createElement("button");
-    beginBtn.innerText = "Begin 🏃"; */
+    this.beginBtn.addEventListener('click', () => {
+      this.start()})
+  }
 
-    beginBtn.addEventListener('click', () => {this.start()
-    //this.intro.remove()});
-    //this.intro.appendChild(beginBtn);
-  })
-}
+  replay(button) {
+    button.addEventListener('click', () => {
+      location.reload();
+      //this.start();
+    })
+  }
 
   start() {
     this.player = new Player();
@@ -99,10 +103,12 @@ class Game {
         this.board.style.display = "none"
         this.youWon.style.display = "none"
         this.gameOver.style.display = "block"
+        this.replay(this.loseReplayBtn);
       } else if (this.player.positionY > 80 && this.player.positionY < 95) {
         this.board.style.display = "none"
         this.youWon.style.display = "block"
         this.gameOver.style.display = "none"
+        this.replay(this.winReplayBtn);
       }
   }
 }
@@ -166,14 +172,13 @@ class Deadline {
       this.squareDeadline = null;
       this.width = 10;
       this.height = 10;
-      //this.positionY = Math.floor(Math.random() * (100 - this.width + 1));
       this.positionY = this.linePositions[this.lineRandomIndex];
       this.positionX = 0 - this.width;
       //this.speed = random number between 1 and 3 maybe
     }
 
     moveDeadline() {
-      this.positionX++;
+      this.positionX = this.positionX +3;
 
 
     /*
