@@ -54,7 +54,7 @@ class Game {
       this.removeDeadline(element);
       });
 
-      if (this.time % 11 === 0) {
+      if (this.time % 5 === 0) {
         const newDeadline = new Deadline;
         newDeadline.squareDeadline = newDeadline.displayDeadline();
         this.deadlines.push(newDeadline);
