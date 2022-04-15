@@ -60,6 +60,7 @@ html {
     font-size: 30px;
     margin: 10px 20px 20px 600px;
     cursor: pointer;
+    border-radius: 20px;
 }
 
 #game-over-page button {
