@@ -59,6 +59,7 @@ html {
     text-align: center;
     font-size: 30px;
     margin: 10px 20px 20px 600px;
+    cursor: pointer;
 }
 
 #game-over-page button {
@@ -66,7 +67,8 @@ html {
     background-color: hsl(61, 85%, 47%);
     padding: 15px 32px;
     font-size: 30px;
-    box-shadow: 5px 10px hsl(224, 87%, 50%)
+    box-shadow: 5px 10px hsl(224, 87%, 50%);
+    cursor: pointer;
 }
 
 #win-page button {
@@ -74,5 +76,6 @@ html {
     background-color: rgb(236, 215, 20);
     padding: 15px 32px;
     font-size: 30px;
-    box-shadow: 5px 10px #2bcf15
+    box-shadow: 5px 10px #2bcf15;
+    cursor: pointer;
 }
