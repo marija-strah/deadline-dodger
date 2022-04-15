@@ -37,7 +37,7 @@ class Game {
     this.youWon.style.display = "none";
     this.intro.style.display = "none";
 
-    let audio = new Audio('../benny-hill-theme.mp3');
+    let audio = new Audio('./benny-hill-theme.mp3');
     audio.play();
 
     setInterval(()=>{
