@@ -26,7 +26,6 @@ class Game {
   replay(button) {
     button.addEventListener('click', () => {
       location.reload();
-      //this.start();
     })
   }
 
@@ -63,16 +62,6 @@ class Game {
     }, 80);
     
   }
-/*
-  // not working bc not an array
-  removeDeadline(deadline) {
-    if (deadline.positionY < 0) {
-    this.deadlines.shift();
-    deadline.squareDeadline.remove();
-    
-    console.log(deadline);
-    }
-  }*/
   
   movePlayer(direction) {
     if (direction === "up") {
@@ -99,7 +88,6 @@ class Game {
       this.player.positionX + this.player.width > element.positionX &&
       this.player.positionY < element.positionY + element.height &&
       this.player.height + this.player.positionY > element.positionY) {
-        //alert('collision detected');
         this.board.style.display = "none"
         this.youWon.style.display = "none"
         this.gameOver.style.display = "block"
@@ -120,7 +108,7 @@ class Player {
     this.positionY = 0;
     this.height = 12;
     this.width = 5;
-    this.squarePlayer = null; //  the DOM elem
+    this.squarePlayer = null;
   }
 
   moveUp() {
@@ -165,8 +153,6 @@ class Player {
 
 class Deadline {
     constructor() {
-      //this.positionX = Math.random() * (50 - 0);
-      //this.positionY = 50;
       this.linePositions = [15, 35, 55, 75]
       this.lineRandomIndex = Math.floor(Math.random()*(this.linePositions.length))
       this.squareDeadline = null;
@@ -174,22 +160,10 @@ class Deadline {
       this.height = 10;
       this.positionY = this.linePositions[this.lineRandomIndex];
       this.positionX = 0 - this.width;
-      //this.speed = random number between 1 and 3 maybe
     }
 
     moveDeadline() {
       this.positionX = this.positionX +3;
-
-
-    /*
-      if (this.positionX >= 95) {
-        let board = document.getElementById("board");
-        const deadlineToRemove = document.querySelector(".deadline");
-        board.removeChild(deadlineToRemove)
-        //deadlineToRemove.remove();
-
-        //removes all of them
-      }*/
     }
 
     displayDeadline() {
